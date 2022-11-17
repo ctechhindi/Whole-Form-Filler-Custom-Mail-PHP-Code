@@ -1,3 +1,3 @@
-# PHPMailer
+# Whole Form Filler (Extension) - Custom Mail PHP Code
 
-- https://github.com/PHPMailer/PHPMailer
+- https://chrome.google.com/webstore/detail/whole-form-filler-cth/pplaoeboeelgkhbfekjjbhjpabhmngib

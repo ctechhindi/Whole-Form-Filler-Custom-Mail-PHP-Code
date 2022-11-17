@@ -37,7 +37,6 @@ function response($output, $statusCode)
 }
 
 // VALIDATION
-print_r($_SERVER["REQUEST_METHOD"]);exit;
 if ($_SERVER["REQUEST_METHOD"] === "GET") {
   return response(["status" => false, "response" => "INVALID REQUEST METHOD"], 400);
 } else {
@@ -87,12 +86,12 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
         $mail->addAddress(cleanMe($post["mail_send_email"]));
         // Content
         $mail->isHTML(true);
-        $mail->Subject = cleanMe($post["mail_send_email"]);
+        $mail->Subject = cleanMe($post["mail_subject"]);
         $mail->Body    = cleanMe($post["mail_html"]);
         // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
         $mail->send();
-        return response(["status" => false, "response" => "Sent"], 200);
+        return response(["status" => false, "response" => "Sended!"], 200);
       } catch (Exception $e) {
         return response(["status" => false, "response" => $mail->ErrorInfo], 400);
       }
