@@ -52,6 +52,8 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
       return response(["status" => false, "response" => "Host Not Found"], 400);
     } else if (!isset($post["username"]) || empty(cleanMe($post["username"]))) {
       return response(["status" => false, "response" => "Username Not Found"], 400);
+    } else if (!isset($post["company_name"]) || empty(cleanMe($post["company_name"]))) {
+      return response(["status" => false, "response" => "Company Name Not Found"], 400);
     } else if (!isset($post["password"]) || empty(cleanMe($post["password"]))) {
       return response(["status" => false, "response" => "Password Not Found"], 400);
     } else if (!isset($post["port"]) || empty(cleanMe($post["port"]))) {
@@ -82,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->Port       = cleanMe($post["port"]);
         // Recipients
-        $mail->setFrom(cleanMe($post["username"]));
+        $mail->setFrom(cleanMe($post["username"]), cleanMe($post["company_name"]));
         $mail->addAddress(cleanMe($post["mail_send_email"]));
         // Content
         $mail->isHTML(true);
